@@ -29,6 +29,8 @@ try {
 
     const otherRepoName = core.getInput("other-repo-name");
     const otherRepoOwner = core.getInput("other-repo-owner");
+    console.log(otherRepoOwner)
+    console.log(otherRepoName)
     //test url
     let tagsOfOtherRepository = getTagsOfRepository(otherRepoOwner, otherRepoName)
     let tagsOfThisRepository = getTagsOfRepository(github.context.repo.owner, github.context.repo.repo)
