@@ -15,9 +15,9 @@ jobs:
           other-repo-name: OSKAR
           other-repo-owner: OxfordSKA
       - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+        run: echo "The time was ${{ steps.test.outputs.time }}"
     outputs:
-      matrix: ${{ steps.Step_1.test.outputs.tags }}
+      matrix: ${{ steps.test.outputs.tags }}
 
   job_2:
     # this means, wait for the "provide_packages_json" phase 1 to finish
