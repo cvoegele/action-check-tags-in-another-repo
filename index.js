@@ -35,6 +35,8 @@ try {
 
     let tagsToProcess = tagsOfOtherRepository.filter(x => !tagsOfThisRepository.includes(x));
     let json = JSON.stringify(tagsToProcess);
+    console.log(tagsToProcess);
+    console.log(json)
 
     core.setOutput("tags", json)
 } catch (error) {
