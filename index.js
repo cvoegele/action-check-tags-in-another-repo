@@ -22,7 +22,7 @@ function getTagsOfOtherRepository(url) {
 }
 
 function getTagsOfRepository(owner, repository) {
-    return getTagsOfOtherRepository(`https://api.github.com/${owner}/${repository}/tags`)
+    return getTagsOfOtherRepository(`https://api.github.com/repos/${owner}/${repository}/tags`)
 }
 
 try {
