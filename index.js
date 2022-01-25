@@ -40,12 +40,8 @@ try {
 
     let tagsToProcess = tagsOfOtherRepository.filter(x => !tagsOfThisRepository.includes(x));
     let json = JSON.stringify(tagsToProcess);
-    console.log(tagsOfOtherRepository);
-    console.log(tagsOfThisRepository);
-    console.log(json)
 
-    const time = (new Date()).toTimeString();
-    core.setOutput("time", time);
+    console.log(`The unprocessed tags are ${json}.`)
 
     core.setOutput("tags", json)
 } catch (error) {

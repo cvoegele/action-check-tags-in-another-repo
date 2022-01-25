@@ -14,18 +14,14 @@ jobs:
         with:
           other-repo-name: OSKAR
           other-repo-owner: OxfordSKA
-      - name: Get the output time
-        run: echo "The time was ${{ steps.test.outputs.time }}"
     outputs:
       matrix: ${{ steps.test.outputs.tags }}
 
   job_2:
-    # this means, wait for the "provide_packages_json" phase 1 to finish
     needs: job_1
 
     runs-on: ubuntu-latest
     strategy:
-      # ↓ the real magic happens here - create dynamic matrix from the json
       matrix:
         tag: ${{ fromJson(needs.job_1.outputs.matrix) }}
 
