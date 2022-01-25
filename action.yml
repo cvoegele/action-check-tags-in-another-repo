@@ -1,13 +1,13 @@
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'action-check-release-on-other-repo'
+description: 'Check release on other repositories'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  github-url-other-repo:  # id of input
+    description: 'url of other repository'
     required: true
-    default: 'World'
+    default: ''
 outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+  tags:
+    description: "output tags"
 runs:
   using: 'node16'
   main: 'index.js'

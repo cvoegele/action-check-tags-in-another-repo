@@ -1,15 +1,41 @@
-const core = require('@actions/core');
-const github = require('@actions/github');
+import core from '@actions/core'
+import github from '@actions/github'
+import fetch from 'node-fetch'
+
+async function fetchAsync(url) {
+    let response = await fetch(url);
+    return await response.text();
+}
+
+function getTagsOfOtherRepository(url) {
+    let tags = []
+    let result = fetchAsync(url)
+    result.then(function (response) {
+
+        const json = JSON.parse(response);
+        for (let i = 0; i < json.length; i++) {
+            const tag = json[i]
+            tags.push(tag.name)
+        }
+    })
+    return tags
+}
+
+function getTagsOfRepository(owner, repository) {
+    return getTagsOfOtherRepository(`https://api.github.com/${owner}/${repository}/OSKAR/tags`)
+}
 
 try {
-  // `who-to-greet` input defined in action metadata file
-  const nameToGreet = core.getInput('who-to-greet');
-  console.log(`Hello ${nameToGreet}!`);
-  const time = (new Date()).toTimeString();
-  core.setOutput("time", time);
-  // Get the JSON webhook payload for the event that triggered the workflow
-  const payload = JSON.stringify(github.context.payload, undefined, 2)
-  console.log(`The event payload: ${payload}`);
+
+    const otherRepoUrl = core.getInput("github-url-other-repo");
+    //test url
+    let tagsOfOtherRepository = getTagsOfOtherRepository(otherRepoUrl)
+    let tagsOfThisRepository = getTagsOfRepository(github.context.repo.owner, github.context.repo.repo)
+
+    let tagsToProcess = tagsOfOtherRepository.filter(x => !tagsOfThisRepository.includes(x));
+    let json = JSON.stringify(tagsToProcess);
+
+    core.setOutput("tags", json)
 } catch (error) {
-  core.setFailed(error.message);
+    core.setFailed(error.message);
 }
