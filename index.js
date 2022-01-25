@@ -44,6 +44,9 @@ try {
     console.log(tagsOfThisRepository);
     console.log(json)
 
+    const time = (new Date()).toTimeString();
+    core.setOutput("time", time);
+
     core.setOutput("tags", json)
 } catch (error) {
     core.setFailed(error.message);

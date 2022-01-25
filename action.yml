@@ -12,6 +12,8 @@ inputs:
 outputs:
   tags:
     description: "output tags"
+  time: # id of output
+    description: 'The time we greeted you'
 runs:
   using: 'node16'
   main: 'index.js'

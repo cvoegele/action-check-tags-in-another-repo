@@ -14,6 +14,8 @@ jobs:
         with:
           other-repo-name: OSKAR
           other-repo-owner: OxfordSKA
+      - name: Get the output time
+        run: echo "The time was ${{ steps.hello.outputs.time }}"
     outputs:
       matrix: ${{ steps.Step_1.test.outputs.tags }}
 
