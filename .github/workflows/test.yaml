@@ -16,4 +16,4 @@ jobs:
           other-repo-owner: OxfordSKA
       - name: Step_2
         run: |
-          echo steps.Step_1.outputs.tags
+          echo $steps.Step_1.outputs.tags
