@@ -1,17 +1,20 @@
 import core from '@actions/core'
 import github from '@actions/github'
-import fetch from 'node-fetch'
 
-async function fetchAsync(url) {
-    let response = await fetch(url);
-    return await response.text();
+function fetchAsync(url) {
+    const request = new XMLHttpRequest();
+    request.open('GET', url, false);  // `false` makes the request synchronous
+    request.send(null);
+    if (request.status === 200) {
+        return request.responseText;
+    }
 }
 
 function getTagsOfOtherRepository(url) {
-    let tags = []
+
     let result = fetchAsync(url)
     result.then(function (response) {
-
+        let tags = []
         const json = JSON.parse(response);
         for (let i = 0; i < json.length; i++) {
             const tag = json[i]
