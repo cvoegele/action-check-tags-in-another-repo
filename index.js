@@ -1,5 +1,6 @@
 import core from '@actions/core'
 import github from '@actions/github'
+import {XMLHttpRequest} from "xmlhttprequest";
 
 function fetchAsync(url) {
     const request = new XMLHttpRequest();
