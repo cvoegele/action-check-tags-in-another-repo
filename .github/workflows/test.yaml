@@ -3,7 +3,7 @@ name: Build Conda Package
 on: [ push ]
 
 jobs:
-  test:
+  job_1:
     runs-on: ubuntu-latest
     steps:
       - name: Step_1
