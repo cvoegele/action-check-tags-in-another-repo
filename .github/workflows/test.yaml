@@ -16,7 +16,7 @@ jobs:
           other-repo-owner: OxfordSKA
       - name: Step_2
         run: |
-          echo $steps.Step_1.test.outputs.tags
+          echo ${{ steps.Step_1.test.outputs.tags }}
 
   job_2:
     # this means, wait for the "provide_packages_json" phase 1 to finish
