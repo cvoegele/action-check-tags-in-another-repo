@@ -6,10 +6,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - name: check
-      uses: cvoegele/action-check-tags-in-another-repo@v0.0.1
-      with:
-        github-url-other-repo: https://github.com/OxfordSKA/OSKAR
-    - name: test
-      run: |
-        echo ${{ check.outputs.tags }}
+      - name: check
+        uses: cvoegele/action-check-tags-in-another-repo@v0.0.1
+        with:
+          github-url-other-repo: https://github.com/OxfordSKA/OSKAR
+      - name: test
+        run: |
+          echo ${{ check.outputs.tags }}
