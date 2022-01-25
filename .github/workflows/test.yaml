@@ -9,8 +9,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Step_1
-          uses: ./ # Uses an action in the root directory
-          id: action-check-tags-in-another-repo
+        uses: ./ # Uses an action in the root directory
+        id: action-check-tags-in-another-repo
         with:
           github-url-other-repo: https://github.com/OxfordSKA/OSKAR
       - name: Step_2
