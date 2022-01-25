@@ -1,8 +1,12 @@
 name: 'action-check-tags-in-another-repo'
 description: 'Check release on other repositories'
 inputs:
-  github-url-other-repo:  # id of input
-    description: 'url of other repository'
+  other-repo-name:  # id of input
+    description: 'name of other repository'
+    required: true
+    default: ''
+  other-repo-owner: # id of input
+    description: 'ownder of other repository'
     required: true
     default: ''
 outputs:

@@ -27,9 +27,10 @@ function getTagsOfRepository(owner, repository) {
 
 try {
 
-    const otherRepoUrl = core.getInput("github-url-other-repo") + "/tags";
+    const otherRepoName = core.getInput("other-repo-name");
+    const otherRepoOwner = core.getInput("other-repo-owner");
     //test url
-    let tagsOfOtherRepository = getTagsOfOtherRepository(otherRepoUrl)
+    let tagsOfOtherRepository = getTagsOfRepository(otherRepoOwner, otherRepoName)
     let tagsOfThisRepository = getTagsOfRepository(github.context.repo.owner, github.context.repo.repo)
 
     let tagsToProcess = tagsOfOtherRepository.filter(x => !tagsOfThisRepository.includes(x));

@@ -12,7 +12,8 @@ jobs:
         uses: ./ # Uses an action in the root directory
         id: action-check-tags-in-another-repo
         with:
-          github-url-other-repo: https://github.com/OxfordSKA/OSKAR
+          other-repo-name: OSKAR
+          other-repo-owner: OxfordSKA
       - name: Step_2
         run: |
           echo ${{ steps.Step_1.outputs.tags }}
