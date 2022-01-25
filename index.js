@@ -17,6 +17,7 @@ function getTagsOfOtherRepository(url) {
             const tag = json[i]
             tags.push(tag.name)
         }
+        console.log(tags)
         return tags
     })
 }
