@@ -13,17 +13,15 @@ function fetchAsync(url) {
 
 function getTagsOfOtherRepository(url) {
 
-    let result = fetchAsync(url)
-    result.then(function (response) {
-        let tags = []
-        const json = JSON.parse(response);
-        for (let i = 0; i < json.length; i++) {
-            const tag = json[i]
-            tags.push(tag.name)
-        }
-        console.log(tags)
-        return tags
-    })
+    let response = fetchAsync(url)
+    let tags = []
+    const json = JSON.parse(response);
+    for (let i = 0; i < json.length; i++) {
+        const tag = json[i]
+        tags.push(tag.name)
+    }
+    console.log(tags)
+    return tags
 }
 
 function getTagsOfRepository(owner, repository) {
