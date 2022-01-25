@@ -22,15 +22,15 @@ function getTagsOfOtherRepository(url) {
 }
 
 function getTagsOfRepository(owner, repository) {
-    return getTagsOfOtherRepository(`https://api.github.com/repos/${owner}/${repository}/tags`)
+    const url = `https://api.github.com/repos/${owner}/${repository}/tags`;
+    console.log(url)
+    return getTagsOfOtherRepository(url)
 }
 
 try {
 
     const otherRepoName = core.getInput("other-repo-name");
     const otherRepoOwner = core.getInput("other-repo-owner");
-    console.log(otherRepoOwner)
-    console.log(otherRepoName)
     //test url
     let tagsOfOtherRepository = getTagsOfRepository(otherRepoOwner, otherRepoName)
     let tagsOfThisRepository = getTagsOfRepository(github.context.repo.owner, github.context.repo.repo)
