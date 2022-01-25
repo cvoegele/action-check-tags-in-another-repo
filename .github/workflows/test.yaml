@@ -12,4 +12,4 @@ jobs:
           github-url-other-repo: https://github.com/OxfordSKA/OSKAR
       - name: Step_2
         run: |
-          echo ${{ Step_1.outputs.tags }}
+          echo ${{ steps.Step_1.outputs.tags }}
