@@ -10,13 +10,13 @@ jobs:
         uses: actions/checkout@v2
       - name: Step_1
         uses: ./ # Uses an action in the root directory
-        id: action-check-tags-in-another-repo
+        id: test
         with:
           other-repo-name: OSKAR
           other-repo-owner: OxfordSKA
       - name: Step_2
         run: |
-          echo $steps.Step_1.action-check-tags-in-another-repo.tags
+          echo $steps.Step_1.test.outputs.tags
 
   job_2:
     # this means, wait for the "provide_packages_json" phase 1 to finish
@@ -26,7 +26,7 @@ jobs:
     strategy:
       # ↓ the real magic happens here - create dynamic matrix from the json
       matrix:
-        tag: ${{ fromJson(needs.job_1.Step_1.action-check-tags-in-another-repo.tags) }}
+        tag: ${{ fromJson(needs.job_1.Step_1.test.outputs.tags) }}
 
     steps:
       - name: Step0
