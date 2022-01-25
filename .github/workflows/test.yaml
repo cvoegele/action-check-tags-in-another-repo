@@ -31,4 +31,4 @@ jobs:
     steps:
       - name: Step0
         run: |
-          echo from ${{ tag }}
+          echo from ${{ matrix.tag }}
