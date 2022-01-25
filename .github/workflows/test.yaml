@@ -6,8 +6,11 @@ jobs:
   job_1:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
       - name: Step_1
-        uses: cvoegele/action-check-tags-in-another-repo@v0.0.1
+          uses: ./ # Uses an action in the root directory
+          id: action-check-tags-in-another-repo
         with:
           github-url-other-repo: https://github.com/OxfordSKA/OSKAR
       - name: Step_2

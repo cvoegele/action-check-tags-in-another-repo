@@ -1,4 +1,4 @@
-name: 'action-check-release-on-other-repo'
+name: 'action-check-tags-in-another-repo'
 description: 'Check release on other repositories'
 inputs:
   github-url-other-repo:  # id of input
